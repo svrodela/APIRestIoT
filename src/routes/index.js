@@ -4,13 +4,17 @@ const model = require('../model/valores')();
 
 const Valor = require('../model/valores');
 
-router.get('/', (req, res) => {
-    res.render('index.ejs');
+router.get('/', async (req, res) => {
+    const valores = await Valor.find();
+    console.log(valores);
+    res.render('index.ejs',{
+        valores
+    });
 });
 
 router.post('/add', async (req, res) => {
     const valor = new Valor(req.body);
     await valor.save();
-    console.log('Recibido');
+    res.redirect('/');
 });
 module.exports = router;

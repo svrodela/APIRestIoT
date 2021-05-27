@@ -10,6 +10,9 @@
     <nav class="navbar navbar-dark bg-dark">
         <a href="/" class="navbar-brand">IOT</a>
     </nav>
+    <pre>
+        
+    </pre>
     <div class="container">
         <div class="col-md-5">
             <div class="card">
@@ -38,7 +41,19 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    <% for(var i = 0; i < valores.length; i++){ %>
+                        <tr>
+                        <td>
+                            <%= i+1 %>
+                        </td>
+                        <td>
+                            <%= valores[i].temperatura %>
+                        </td>
+                        <td>
+                            <%= valores[i].humedad %>
+                        </td>
+                    </tr>
+                    <% }%>
                 </tbody>
             </table>
         </div>
