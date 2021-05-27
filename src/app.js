@@ -11,17 +11,14 @@ const indexRoutes = require('./routes/index.js');
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view egine', 'ejs');
-
+// conexion a BD
+mongoose.connect('mongodb+srv://sergio_test:sEelYOr4XXdzGtPe@clustersergio.ponuf.mongodb.net/iot?retryWrites=true&w=majority')
+.then(bd => console.log('BD se conectó')).catch(err =>console.log(err));
 
 //middleware
 app.use(log('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 
-//conecta a la bd
-
-mongoose.connect('mongodb+srv://sergio_test:MBjVXjiqRYKeqjcV@clustersergio.ponuf.mongodb.net/iot?retryWrites=true&w=majority')
-.then(db => console.log('BD se conectó')).catch(err=>console.log(err));
-        
 
 //rutas 
 app.use('/', indexRoutes);
